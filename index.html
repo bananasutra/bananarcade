@@ -32,15 +32,9 @@
   .provenance{font-family:var(--mono);font-size:11px;color:var(--mut);margin-top:10px;line-height:1.6}
   .provenance b{color:var(--ink)}
   /* tone toggle */
-  .tone{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--mut)}
-  .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--panel)}
-  .seg button{appearance:none;border:0;background:transparent;color:var(--mut);font-family:var(--mono);font-size:11px;
-    letter-spacing:.08em;text-transform:uppercase;padding:7px 13px;cursor:pointer}
-  .seg button.on{background:var(--red);color:#fff}
-  /* narrator */
+  /* narrator greeting */
   .narr{margin:18px 0 4px;border-left:3px solid var(--amber);padding:10px 14px;background:rgba(243,167,56,.05);
     font-family:var(--disp);font-style:italic;color:#e6dcc8;font-size:15px;line-height:1.5;border-radius:0 8px 8px 0}
-  .narr.sober{border-left-color:var(--red);background:rgba(226,59,59,.05);font-style:normal;font-family:var(--sans);color:#dcd6cd}
   /* hub */
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
   @media(max-width:680px){.grid{grid-template-columns:1fr}}
@@ -119,6 +113,18 @@
   footer{margin-top:42px;border-top:1px solid var(--line);padding-top:18px;color:var(--mut);font-family:var(--mono);font-size:11px;line-height:1.7}
   .disclaim{margin-top:10px;color:var(--mut);font-size:11px;font-family:var(--mono);line-height:1.6;border:1px dashed var(--line);padding:10px 12px;border-radius:8px}
   .hide{display:none!important}
+  /* intro + per-game briefs */
+  .facts{margin:14px 0 4px;color:var(--mut);font-size:13.5px;line-height:1.6}
+  .facts b{color:var(--ink)}
+  .question{margin:16px 0 2px;font-family:var(--disp);font-size:clamp(18px,3.2vw,23px);color:var(--ink);line-height:1.35}
+  .question .ans{color:var(--red)}
+  .brief{border:1px solid var(--line);background:linear-gradient(180deg,rgba(243,167,56,.05),transparent);
+    border-radius:12px;padding:14px 16px;margin-bottom:14px}
+  .brief .q{font-family:var(--disp);font-size:18px;color:var(--ink);margin:0 0 8px}
+  .brief .q .ans{color:var(--red)}
+  .brief .how{font-size:13px;color:var(--mut);line-height:1.55;margin:0}
+  .brief .how b{color:var(--ink)}
+  .brief .how .key{color:var(--amber)}
 </style>
 </head>
 <body>
@@ -128,19 +134,19 @@
     <div>
       <div class="brand">trumpactiontracker · arcade edition</div>
       <h1>THE DISMANTLING</h1>
-      <div class="sub">Six ways into <b id="totalActions">—</b> documented actions: four games, an evidence room, and a model. You play the guardrails. Mostly you lose — the only variable is how fast.</div>
-      <div class="provenance" id="prov">—</div>
-    </div>
-    <div class="tone">
-      <span>Voice</span>
-      <div class="seg" id="toneSeg">
-        <button data-tone="satire" class="on">Satire</button>
-        <button data-tone="sober">Sober</button>
-      </div>
     </div>
   </header>
 
-  <div class="narr" id="narrator">—</div>
+  <div class="narr" id="narrator">Bertrand leans in, cigarette unlit: “Bienvenue, mon ami. We built a little arcade out of the apocalypse — it plays better than a pie chart. Six machines. Five of them, you lose. One, you can win — barely. <i>That</i> is the realism. Allons-y.”</div>
+
+  <div class="facts">
+    Every machine here runs on the same source: <b id="totalActions">—</b> real, dated, documented actions logged by trumpactiontracker.info, sorted into 10 categories of democratic erosion. <span id="prov">—</span> The counts and dates are facts; anything past today is a clearly-labeled projection.
+  </div>
+
+  <div class="question">
+    The whole arcade asks one question — <b>can this get better by 2028?</b><br>
+    <span class="ans">Left to run, the record says no:</span> the volume outpaces the courts, the institutions, and the people trying to sort it — faster every month. The only way to a different answer is the one game you can win, and it shows what that takes: deliberate, coordinated, well-timed pressure. So the dread is real — but the last word isn’t.
+  </div>
 
   <!-- HUB -->
   <div id="hub">
@@ -149,46 +155,46 @@
         <span class="tag">real velocity</span>
         <div class="no">GAME 01</div>
         <h3>Overwhelm</h3>
-        <p id="hub-overwhelm">You are the justice system. Actions fall at the real, accelerating rate. You can only touch a few. The backlog is the point.</p>
+        <p id="hub-overwhelm"><b style="color:var(--ink)">Can the courts keep up with the volume?</b> You are the justice system, with one pair of hands, as actions fall at the real, accelerating rate.</p>
         <div class="play">▶ PLAY</div>
       </div>
       <div class="card" data-go="guardrail">
         <span class="tag">10 categories</span>
         <div class="no">GAME 02</div>
         <h3>Guardrail Collapse</h3>
-        <p id="hub-guardrail">Eight institutions. Each month, the real actions strike them. Shore up one — only one — and watch the rest fall.</p>
+        <p id="hub-guardrail"><b style="color:var(--ink)">Can the institutions absorb the hits?</b> Eight of them, drained each month by the real actions. You may reinforce only one.</p>
         <div class="play">▶ PLAY</div>
       </div>
       <div class="card" data-go="sort">
         <span class="tag">real headlines</span>
         <div class="no">GAME 03</div>
         <h3>Sort the Flood</h3>
-        <p id="hub-sort">Triage real actions into the right categories before the clock runs out. The clock keeps shrinking. So does your accuracy.</p>
+        <p id="hub-sort"><b style="color:var(--ink)">Can oversight even sort it all in time?</b> Triage real actions into the right categories before a clock that keeps shrinking.</p>
         <div class="play">▶ PLAY</div>
       </div>
       <div class="card" data-go="midnight">
         <span class="tag">strategy · winnable</span>
         <div class="no">GAME 04</div>
         <h3>Hold Back Midnight</h3>
-        <p id="hub-midnight">Spend your civic capacity — courts, press, protest, ballots — to push the clock back, quarter by quarter, all the way to the 2028 election. The one game you can actually win.</p>
+        <p id="hub-midnight"><b style="color:var(--ink)">Is there any way to win — to reach 2028 standing?</b> Spend civic capacity, quarter by quarter, to push the clock back. The one game you can actually win.</p>
         <div class="play">▶ PLAY</div>
       </div>
       <div class="card" data-go="countdown">
         <span class="tag">evidence · data</span>
         <div class="no">ROOM 05</div>
         <h3>The Record + Forecast</h3>
-        <p id="hub-countdown">Not a game — the evidence room. The documented velocity, the category breakdown, the doomsday clock, and a clearly-labeled trend line to 2028.</p>
+        <p id="hub-countdown"><b style="color:var(--ink)">What does the record actually show?</b> Not a game — the evidence behind the games: the velocity, the categories, the clock, and two labeled projections.</p>
         <div class="play">▶ OPEN</div>
       </div>
       <div class="card" data-go="scenario">
         <span class="tag">model · interactive</span>
         <div class="no">TOOL 06</div>
         <h3>Scenario Model</h3>
-        <p id="hub-scenario">Drag the future. Two sliders — how fast actions grow, how hard institutions push back — and watch where 2028 lands. A model, not a prophecy.</p>
+        <p id="hub-scenario"><b style="color:var(--ink)">What would it take to bend the line?</b> Two sliders — how fast actions grow, how hard institutions push back — and watch where 2028 lands. A model, not a prophecy.</p>
         <div class="play">▶ OPEN</div>
       </div>
     </div>
-    <div class="disclaim" id="hubDisclaim">—</div>
+    <div class="disclaim">Every action in every game is a real, dated, sourced entry. The game framings are interpretation; the records underneath are not.</div>
   </div>
 
   <!-- GAME 1: OVERWHELM -->
@@ -198,6 +204,10 @@
       <div class="gtitle">Overwhelm</div>
       <button class="btn" id="ow-start">Start</button>
     </div>
+    <div class="brief">
+      <p class="q">Can the courts keep up with the volume? <span class="ans">No.</span></p>
+      <p class="how">You are the justice system, with one pair of hands. <b>Tap each falling action</b> to process it — but only one at a time (there's a cooldown). Anything that crosses the <span class="key">red line</span> goes unchecked. The rate climbs with the real calendar toward 2028. The backlog is the point.</p>
+    </div>
     <div class="panel">
       <div class="hud" style="margin-bottom:12px">
         <div class="red"><b id="ow-missed">0</b>UNCHECKED (passed the courts)</div>
@@ -206,7 +216,7 @@
         <div><b id="ow-rate">—</b>ACTIONS / MIN</div>
       </div>
       <canvas id="ow-canvas" width="1040" height="440"></canvas>
-      <div class="small" id="ow-help" style="margin-top:10px">Click or tap a falling action to process it. The "courts" (the bar near the bottom) move toward you, but you can only handle one case at a time — there's a cooldown. As the simulated calendar advances toward 2028, the spawn rate follows the real monthly numbers, then the projected ones. <b>You cannot win. Measure your loss.</b></div>
+      <div class="small" id="ow-help" style="margin-top:10px">The green bar at the bottom is your capacity cooldown — one case at a time. You cannot win this one; measure your loss.</div>
       <div id="ow-end" class="endcard hide"></div>
     </div>
   </section>
@@ -218,6 +228,10 @@
       <div class="gtitle">Guardrail Collapse</div>
       <button class="btn" id="gr-step">Advance one month ▶</button>
     </div>
+    <div class="brief">
+      <p class="q">Can the institutions absorb the hits? <span class="ans">No.</span></p>
+      <p class="how">Eight institutions, each drained every month by the real actions in its categories. <b>Advance the months</b>; you may <span class="key">shore up just one</span> guardrail per month (+18 health). A guardrail at zero fails. When three structural ones (marked ✦) fail, free &amp; fair elections fail with them.</p>
+    </div>
     <div class="panel">
       <div class="hud" style="margin-bottom:14px">
         <div class="amber"><b id="gr-month">—</b>MONTH</div>
@@ -225,7 +239,7 @@
         <div><b id="gr-shore">1</b>SHORE-UPS LEFT THIS MONTH</div>
       </div>
       <div class="rails" id="gr-rails"></div>
-      <div class="small" style="margin-top:12px" id="gr-help">Each month, every real action in a category drains the institutions it touches. You may <b>shore up one guardrail per month</b> (+18 health) — pick wisely; the volume never waits. A guardrail at 0 fails. When the structural ones fail, the verdict appears.</div>
+      <div class="small" style="margin-top:12px" id="gr-help">✦ = a structural guardrail (courts, press, dissent, elections). Pick your one shore-up wisely; the volume never waits.</div>
       <div id="gr-verdict" class="endcard hide"></div>
     </div>
   </section>
@@ -237,6 +251,10 @@
       <div class="gtitle">Sort the Flood</div>
       <button class="btn" id="so-start">Start</button>
     </div>
+    <div class="brief">
+      <p class="q">Can oversight even sort it all in time? <span class="ans">No.</span></p>
+      <p class="how">A real logged action appears. <b>Tap every category it belongs to, then Submit</b> before the <span class="key">clock</span> empties. Each round the clock shrinks (18s → 7s) and more actions span several categories at once — the way real triage breaks when speed and complexity climb together.</p>
+    </div>
     <div class="panel">
       <div class="hud" style="margin-bottom:10px">
         <div class="ok"><b id="so-score">0</b>CORRECTLY FILED</div>
@@ -245,7 +263,7 @@
         <div><b id="so-time">—s</b>PER CASE</div>
       </div>
       <div class="timebar"><i id="so-timefill"></i></div>
-      <div class="cardtext" id="so-text">Press Start. You'll see a real logged action. Tap every category it belongs to, then Submit — before the clock empties. Each round the clock gets shorter and more actions touch several categories at once.</div>
+      <div class="cardtext" id="so-text">Press <b>Start</b> to begin filing.</div>
       <div class="buckets" id="so-buckets"></div>
       <div style="margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
         <button class="btn" id="so-submit" disabled>Submit filing</button>
@@ -261,6 +279,10 @@
       <button class="back" data-back>← arcade</button>
       <div class="gtitle">The Record + Forecast</div>
       <span class="small">the evidence room · Nov 2028 = next federal election</span>
+    </div>
+    <div class="brief">
+      <p class="q">What does the record actually show?</p>
+      <p class="how">This is the evidence the games are built on — no scorekeeping, just the data. <span class="key">Green</span> panels are documented and on the record; the <span class="key" style="color:var(--red)">red</span> panel is a clearly-labeled projection. Open “How is this clock calculated?” and “What is data vs projection?” to see exactly where fact ends and forecast begins.</p>
     </div>
     <div class="dash">
       <div class="panel docu clockwrap">
@@ -317,6 +339,10 @@
       <div class="gtitle">Hold Back Midnight</div>
       <button class="btn" id="mn-start">New campaign</button>
     </div>
+    <div class="brief">
+      <p class="q">Is there any way to win — to reach 2028 standing? <span class="ans" style="color:var(--ok)">Yes — barely.</span></p>
+      <p class="how">Each quarter, documented pressure pushes the clock toward midnight. Spend <b>5 capacity points</b> across courts, press, protest, and ballots to push back, then commit the quarter. <span class="key">Ballots are weak now but triple in the final two quarters</span> — bank them for the 2028 election. Keep the clock above zero all the way to Nov 2028 and you win. Careless play loses; disciplined, well-timed play wins by a hair. That's the whole point: it can get better — but only on purpose.</p>
+    </div>
     <div class="dash">
       <div class="panel clockwrap">
         <canvas id="mn-clock" width="360" height="360" style="max-width:260px;background:transparent;border:0"></canvas>
@@ -331,7 +357,7 @@
           <div class="red"><b id="mn-threat">—</b>INCOMING THIS QUARTER</div>
           <div class="ok"><b id="mn-budget">—</b>CAPACITY LEFT</div>
         </div>
-        <div class="small" id="mn-help" style="margin-bottom:10px">Each quarter, documented actions in the three structural categories push the clock toward midnight. Spend your <b>civic capacity</b> across the four levers to push it back, then commit the quarter. <b>Ballots</b> barely matter early but pay off hugely in the 2028 election quarters — bank for them. Survive to Nov 2028 above midnight and you win.</div>
+        <div class="small" id="mn-help" style="margin-bottom:10px">Use −/+ to allocate your capacity, then <b>Commit quarter</b>. Watch for the ⚡ELECTION marker — that's when ballots pay off triple.</div>
         <div id="mn-levers"></div>
         <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
           <button class="btn" id="mn-commit">Commit quarter ▶</button>
@@ -349,6 +375,10 @@
       <button class="back" data-back>← arcade</button>
       <div class="gtitle">Scenario Model</div>
       <span class="small">a model — not a forecast</span>
+    </div>
+    <div class="brief">
+      <p class="q">What would it take to bend the line by 2028?</p>
+      <p class="how">A sandbox, not a prophecy. Set <span class="key">how fast actions grow</span> and <span class="key">how hard institutions push back</span>, then read where Nov 2028 lands — total actions and the guardrail clock. Everything past “now” is hypothetical; the dataset can't see courts, elections, or public pressure, so you supply those with the second slider.</p>
     </div>
     <div class="panel proj">
       <span class="lbl red">Drag the assumptions · everything past “now” is hypothetical</span>
@@ -375,7 +405,7 @@
   </section>
 
   <footer>
-    <div id="foot-tone">—</div>
+    <div style="margin-bottom:8px">The numbers are documented. The framing is a warning — made playful so it travels, made accurate so it can't be waved away.</div>
     Data: trumpactiontracker.info · CC BY-SA 4.0 · accessed 2026-06-27. Built as a single offline HTML file — no backend, no tracking, no algorithm.<br>
     A companion to <a href="https://trump-actions-tracker.streamlit.app/" target="_blank" rel="noopener">the tracker</a> and to <a href="https://bananasutra.com/" target="_blank" rel="noopener">bananasutra.com</a>. Games are advocacy art; the numbers are real, the dread is existential.
   </footer>
@@ -388,37 +418,6 @@
 const DATA = JSON.parse(document.getElementById('DATA').textContent);
 const SHORT = DATA.short, CATS = DATA.cats, MONTHLY = DATA.monthly, POOL = DATA.actions;
 const NCAT = CATS.length;
-let TONE = 'satire';
-
-/* ---------- copy in both voices ---------- */
-const COPY = {
-  satire:{
-    narrator:'Bertrand leans in, cigarette unlit: “Bienvenue. We made a little arcade out of the apocalypse — it tests better than a pie chart. Pick a machine. They are all rigged, mon ami. That is the realism.”',
-    hub:{
-      overwhelm:'You are the entire justice system, and you have one pair of hands. Actions fall at the real rate. Catch what you can. Apologize to the rest.',
-      guardrail:'Eight institutions, politely queuing to be demolished. Save one a month. Feel like a hero. Lose anyway.',
-      sort:'Be the overworked clerk. File the real headlines correctly. The clock laughs and gets shorter.',
-      midnight:'Finally, a fight you can win — barely. Spend courts, press, protest, and ballots to shove the clock back. Save your ballots for 2028, mon ami. That is the whole trick.',
-      countdown:'Not a game — the evidence room. The doomsday clock with footnotes, honest about which scary number is real and which is just trend-lines being dramatic.',
-      scenario:'Two sliders and a god complex. Decide how fast it rots and how hard people fight, watch 2028 rearrange itself. A model, not a crystal ball.'
-    },
-    disclaim:'Tongue in cheek, knife in hand. Every headline in these games is a real logged action. The jokes are mine; the data is theirs.',
-    foot:'Made playful so it gets shared. Made accurate so it can’t be waved away.'
-  },
-  sober:{
-    narrator:'These four games run on the documented record: 3,466 actions logged between January 20, 2025 and June 26, 2026. Nothing here is invented. The mechanics exist to make the volume and the velocity legible — because a list this long stops being readable, which is part of how it works.',
-    hub:{
-      overwhelm:'You represent the justice system’s finite capacity. Actions arrive at the documented monthly rate. What you cannot reach passes unchecked. That gap is the subject.',
-      guardrail:'Eight institutions carry democratic guardrails. Each month the real actions in each category reduce their integrity. You can reinforce one per month. The arithmetic is the argument.',
-      sort:'Categorization is how oversight scales. Sort real actions correctly under a shrinking time limit to feel how triage fails when volume and complexity rise together.',
-      midnight:'A turn-based counterfactual: documented quarterly pressure versus a finite civic-capacity budget you allocate across courts, press, protest, and electoral participation. The winnable path requires deferring electoral capacity to the 2028 quarters — a model of why timing and coordination matter.',
-      countdown:'Not a game — the evidence room. A composite index built only from documented counts, paired with two clearly-labeled extrapolations to the November 2028 election. Data and projection are kept visibly separate.',
-      scenario:'An interactive model. Two parameters — the monthly growth rate of actions and an institutional-pushback factor — drive a live extrapolation to Nov 2028. Explicitly a sandbox for assumptions, not a prediction.'
-    },
-    disclaim:'Every action shown is a real, dated, sourced entry from the dataset. Game framings are interpretation; the underlying records are not.',
-    foot:'The numbers are documented. The framing is a warning, offered so the pattern is harder to ignore.'
-  }
-};
 
 /* ---------- helpers ---------- */
 const $ = s=>document.querySelector(s);
@@ -430,20 +429,8 @@ function sample(arr,n){const c=arr.slice();for(let i=c.length-1;i>0;i--){const j
 
 /* ---------- boot ---------- */
 $('#totalActions').textContent = fmt(DATA.meta.total);
-$('#prov').innerHTML = `<b>${fmt(DATA.meta.total)}</b> actions · <b>${monthLabel(DATA.meta.start.slice(0,7))}</b> → <b>${monthLabel(DATA.meta.end.slice(0,7))}</b> · 10 categories · source: ${DATA.meta.source}`;
+$('#prov').textContent = `Logged ${monthLabel(DATA.meta.start.slice(0,7))} → ${monthLabel(DATA.meta.end.slice(0,7))}.`;
 $('#cd-mtotal').textContent = fmt(DATA.meta.total);
-
-function applyTone(){
-  const c = COPY[TONE];
-  const nar = $('#narrator'); nar.textContent = c.narrator; nar.classList.toggle('sober', TONE==='sober');
-  for(const k in c.hub){ const el=$('#hub-'+k); if(el) el.textContent=c.hub[k]; }
-  $('#hubDisclaim').textContent = c.disclaim;
-  $('#foot-tone').textContent = c.foot;
-  document.querySelectorAll('#toneSeg button').forEach(b=>b.classList.toggle('on', b.dataset.tone===TONE));
-}
-document.querySelectorAll('#toneSeg button').forEach(b=>{
-  b.addEventListener('click',()=>{TONE=b.dataset.tone;applyTone();});
-});
 
 /* ---------- navigation ---------- */
 const sections = ['overwhelm','guardrail','sort','midnight','countdown','scenario'];
@@ -558,14 +545,11 @@ function owEnd(){
   const total=s.caught+s.missed;
   const pct = total? Math.round(100*s.missed/total):0;
   $('#ow-help').classList.add('hide');
-  const sober = TONE==='sober';
   $('#ow-end').classList.remove('hide');
   $('#ow-end').innerHTML = `
-    <h4>${sober?'Simulation ended':'The docket wins'}</h4>
+    <h4>Answer: no. The docket wins.</h4>
     <div class="bignum">${pct}%</div>
-    <p>${sober
-      ? `Of ${total} actions that arrived, you reached <b>${s.caught}</b>. <b>${s.missed}</b> passed unchecked — about <b>${pct}%</b>. A single pair of hands against a documented rate that climbed from 53 actions in the first month to over 280 at peak. This is the capacity argument: oversight is finite; the volume is not.`
-      : `You adjudicated <b>${s.caught}</b> cases like a hero and let <b>${s.missed}</b> sail past — ${pct}% unchecked. In your defense, you are one person. In reality, so are the courts, more or less.`}</p>
+    <p>Of ${total} actions that arrived, you reached <b>${s.caught}</b>. <b>${s.missed}</b> passed unchecked — about <b>${pct}%</b>. One pair of hands against a documented rate that climbed from 53 actions in month one to over 280 at peak. Oversight is finite; the volume is not. That gap is the whole point.</p>
     <button class="btn" onclick="startOverwhelm()">Run it again</button>`;
 }
 $('#ow-start').addEventListener('click',startOverwhelm);
@@ -631,13 +615,10 @@ function grVerdict(structFell){
   grState.ended=true; $('#gr-step').disabled=true; $('#gr-help').classList.add('hide');
   const elections = grState.rails.find(r=>r.nm.startsWith('Free & fair'));
   const lost = grState.rails.filter(r=>r.dead).map(r=>r.nm);
-  const sober=TONE==='sober';
   $('#gr-verdict').classList.remove('hide');
   $('#gr-verdict').innerHTML=`
     <h4>${elections.dead?'FREE &amp; FAIR ELECTIONS: FAILED':'Structural guardrails breached'}</h4>
-    <p>${sober
-      ? `By ${monthLabel(MONTHLY[Math.min(grState.idx,MONTHLY.length-1)].m)}, ${lost.length} of ${grState.rails.length} institutions reached zero integrity under the documented monthly load${lost.length?': '+lost.join(', '):''}. One reinforcement a month could not offset the combined category volume — which is the mechanism this game encodes.`
-      : `You saved one a month. You were magnificent. ${lost.length} fell anyway${lost.length?' — '+lost.join(', '):''}. Turns out a bucket is a poor defense against a flood with a schedule.`}</p>
+    <p>Answer: no. By ${monthLabel(MONTHLY[Math.min(grState.idx,MONTHLY.length-1)].m)}, ${lost.length} of ${grState.rails.length} institutions hit zero under the documented monthly load${lost.length?': '+lost.join(', '):''}. You saved one a month — and one bucket is no defense against a flood that arrives on a schedule. The arithmetic is the argument.</p>
     <button class="btn" onclick="initGuardrail()">Try a different order</button>`;
 }
 $('#gr-step').addEventListener('click',grAdvance);
@@ -700,14 +681,11 @@ function sortEnd(){
   if(soTimer)clearInterval(soTimer);
   const s=soState; const total=s.score+s.miss;
   const acc= total? Math.round(100*s.score/total):0;
-  const sober=TONE==='sober';
   $('#so-end').classList.remove('hide');
   $('#so-end').innerHTML=`
-    <h4>${sober?'Filing window closed':'The inbox won'}</h4>
+    <h4>Answer: no. The inbox won.</h4>
     <div class="bignum">${acc}%</div>
-    <p>${sober
-      ? `You filed <b>${s.score}</b> of ${total} cases perfectly as the per-case clock fell from 18s toward 7s and more actions touched several categories at once. Accurate categorization is how oversight scales — and it degrades exactly when speed and complexity rise together, which is the documented condition here.`
-      : `${acc}% perfectly filed before the clock and the multi-category curveballs got you. Don’t feel bad — that’s roughly how a real understaffed oversight office feels every single morning.`}</p>
+    <p>You filed <b>${s.score}</b> of ${total} cases perfectly as the per-case clock fell from 18s toward 7s and more actions touched several categories at once. Accurate categorization is how oversight scales — and it breaks exactly when speed and complexity climb together, which is the documented condition here.</p>
     <button class="btn" onclick="startSort()">New stack of cases</button>`;
 }
 function stopSort(){ if(soTimer)clearInterval(soTimer); }
@@ -910,20 +888,15 @@ function mnCommit(){
 function mnEnd(won){
   const s=mnState; s.ended=true; $('#mn-commit').disabled=true; $('#mn-help').classList.add('hide');
   drawClock(Math.max(0,Math.min(12,s.clock)),'mn-clock'); $('#mn-mins').textContent=s.clock.toFixed(1);
-  const sober=TONE==='sober';
   $('#mn-end').classList.remove('hide');
   $('#mn-end').innerHTML = won
-    ? `<h4 style="color:var(--ok)">${sober?'Reached Nov 2028 — guardrails intact':'You held the line'}</h4>
+    ? `<h4 style="color:var(--ok)">Answer: yes — you held the line to 2028.</h4>
        <div class="bignum" style="color:var(--ok)">${s.clock.toFixed(1)} min</div>
-       <p>${sober
-         ? `You carried a positive clock through to the 2028 election quarter. Note what it took: deferring electoral capacity until the quarters where it mattered, and spending courts/press steadily against documented pressure. The win is narrow by design — coordination and timing, not heroics.`
-         : `Against a documented flood, you kept the clock off zero to election day. You banked the ballots. You won the only game in here you can win — by playing the long one.`}</p>
+       <p>You carried a positive clock all the way to the November 2028 election. Note what it took: spending courts and press steadily against documented pressure, and <b>banking ballots for the final two quarters</b> where they pay off triple. The win is narrow by design — coordination and timing, not heroics. It <i>can</i> get better — but only on purpose.</p>
        <button class="btn" onclick="initMidnight()">Run it again</button>`
-    : `<h4>${sober?'Clock reached midnight':'Midnight'}</h4>
+    : `<h4>Midnight — the clock ran out before 2028.</h4>
        <div class="bignum">00:00</div>
-       <p>${sober
-         ? `The structural pressure outran your capacity before the election. The usual cause: spreading the budget evenly, or spending ballots early when their effect is weakest. The documented threat curve rewards saving electoral capacity for the 2028 quarters.`
-         : `The clock hit zero before 2028. You fought everywhere and so held nowhere. Try hoarding ballots for the final quarters — that's the trapdoor out.`}</p>
+       <p>The structural pressure outran your capacity before the election. The usual cause: spreading the budget evenly, or spending ballots early when their effect is weakest. The path out is to hold steady with courts and press, then <b>hoard ballots for the final two quarters</b>. Try again — this is the one you can win.</p>
        <button class="btn" onclick="initMidnight()">Try again</button>`;
 }
 $('#mn-start').addEventListener('click',initMidnight);
@@ -985,7 +958,7 @@ function drawScenarioChart(cum, proj, finalTot){
 }
 
 /* ---------- init ---------- */
-applyTone();
+// (copy is static now; nothing to initialize for tone)
 </script>
 </body>
 </html>
